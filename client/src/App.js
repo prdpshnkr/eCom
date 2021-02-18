@@ -6,7 +6,8 @@ import {BrowserRouter, Switch, Route} from "react-router-dom";
 import {QueryClientProvider, QueryClient } from "react-query";
 import {loadStripe} from '@stripe/stripe-js';
 import { CartProvider } from "use-shopping-cart";
-import Toaster from "react-hot-toast";
+import {Toaster} from "react-hot-toast";
+import Navbar from "../../client/src/components/Navbar";
 
 const queryClient = new QueryClient();
 const stripePromise = loadStripe('pk_test_51IM6EsKLPiMeV65SEOAWMfUC0yVj1dPgcgl7pnIJDe2sFBLCAXVw6HKamJp6Z2laoLX5tBJlxAQWJkdIe9JQuoqy00vXKj9NJZ')
@@ -19,6 +20,8 @@ function App() {
     currency="USD"
     >
     <BrowserRouter>
+    <Navbar />
+    <Toaster position="bottom-center"/>      
       <Switch>
         <Route exact path="/" component={Home}/>
         <Route path="/result" component={Result}/>
